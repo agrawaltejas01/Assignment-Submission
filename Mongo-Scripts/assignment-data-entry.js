@@ -1,145 +1,178 @@
 db.assignment.insertMany([
     {
-        _id : "I.4.ML.1",        
-        dept : 'IT',
-        year : 4,        
-        subject : 'ML',
-        number : 1,
-        title : "Develop a KNN model"
+        _id: "I.4",
+        dept: 'IT',
+        year: 4,
+        subject: [
+
+            {
+                name: 'ML',
+                assignment: [
+                    {
+                        number: 1,
+                        title: "Develop a KNN model",
+                        performanceDate: new Date()
+                    },
+
+                    {
+                        number: 2,
+                        title: "Create a book Recommendation Sysytem for library",
+                        performanceDate: new Date()
+                    }
+                ]
+            },
+
+            {
+                name: 'CO',
+                assignment: [
+                    {
+                        number: 1,
+                        title: "Implement Simplex Method",
+                        performanceDate: new Date()
+                    },
+
+                    {
+                        number: 2,
+                        title: "Implement Min-Max Flow",
+                        performanceDate: new Date()
+                    }
+                ]
+            }
+
+        ]
+
     },
 
     {
-        _id : "I.4.ML.2",        
-        dept : 'IT',
-        year : 4,        
-        subject : 'ML',
-        number : 2,
-        title : "Create a book Recommendation Sysytem for library"
+        _id: "I.3",
+        dept: 'IT',
+        year: 3,
+        subject: [
+
+            {
+                name: 'SDM',
+                assignment: [
+                    {
+                        number: 1,
+                        title: "Create a Class Diagram for E-Commerce",
+                        performanceDate: new Date()
+                    },
+
+                    {
+                        number: 2,
+                        title: "Create a Activity Diagram for E-Commerce",
+                        performanceDate: new Date()
+                    }
+                ]
+            },
+
+            {
+                name: 'DBMS',
+                assignment: [
+                    {
+                        number: 1,
+                        title: "Create a DBMS for E-Commerce",
+                        performanceDate: new Date()
+                    },
+
+                    {
+                        number: 2,
+                        title: "Mini Project",
+                        performanceDate: new Date()
+                    }
+                ]
+            }
+
+        ]
+
     },
 
     {
-        _id : "I.4.CO.1",        
-        dept : 'IT',
-        year : 4,        
-        subject : 'CO',
-        number : 1,
-        title : "Implement Simplex Method"
+        _id: "C.4",
+        dept: 'COMP',
+        year: 4,
+        subject: [
+
+            {
+                name: 'HCI',
+                assignment: [
+                    {
+                        number: 1,
+                        title: "Create a login page in HTML + CSS",
+                        performanceDate: new Date()
+                    },
+
+                    {
+                        number: 2,
+                        title: "Use HCI in IOT mini project",
+                        performanceDate: new Date()
+                    }
+                ]
+            },
+
+            {
+                name: 'IOT',
+                assignment: [
+                    {
+                        number: 1,
+                        title: "Implement a fan regulator in Raspberry-pi",
+                        performanceDate: new Date()
+                    },
+
+                    {
+                        number: 2,
+                        title: "Mini Project",
+                        performanceDate: new Date()
+                    }
+                ]
+            }
+
+        ]
+
     },
 
     {
-        _id : "I.4.CO.2",        
-        dept : 'IT',
-        year : 4,        
-        subject : 'CO',
-        number : 2,
-        title : "Implement Min-Max Flow"
-    },
+        _id: "C.3",
+        dept: 'COMP',
+        year: 3,
+        subject: [
 
-    {
-        _id : "I.3.DBMS.1",        
-        dept : 'IT',
-        year : 3,        
-        subject : 'DBMS',
-        number : 1,
-        title : "Create a DBMS for E-Commerce"
-    },
+            {
+                name: 'SDM',
+                assignment: [
+                    {
+                        number: 1,
+                        title: "Create a Class Diagram for E-Commerce",
+                        performanceDate: new Date()
+                    },
 
-    {
-        _id : "I.3.DBMS.2",        
-        dept : 'IT',
-        year : 3,        
-        subject : 'DBMS',
-        number : 2,
-        title : "Mini Project"
-    },
+                    {
+                        number: 2,
+                        title: "Create a Activity Diagram for E-Commerce",
+                        performanceDate: new Date()
+                    }
+                ]
+            },
 
-    {
-        _id : "I.3.SDM.1",        
-        dept : 'IT',
-        year : 3,        
-        subject : 'SDM',
-        number : 1,
-        title : "Create a Class Diagram for E-Commerce"
-    },
+            {
+                name: 'DBMS',
+                assignment: [
+                    {
+                        number: 1,
+                        title: "Create a DBMS for E-Commerce",
+                        performanceDate: new Date()
+                    },
 
-    {
-        _id : "I.3.SDM.2",        
-        dept : 'IT',
-        year : 3,        
-        subject : 'SDM',
-        number : 2,
-        title : "Create a Activity Diagram for E-Commerce"
-    },
+                    {
+                        number: 2,
+                        title: "Mini Project",
+                        performanceDate: new Date()
+                    }
+                ]
+            }
 
-    {
-        _id : "C.4.IOT.1",        
-        dept : 'COMP',
-        year : 4,        
-        subject : 'IOT',
-        number : 1,
-        title : "Implement a fan regulator in Raspberry-pi"
-    },
-    
-    {
-        _id : "C.4.IOT.2",        
-        dept : 'COMP',
-        year : 4,        
-        subject : 'IOT',
-        number : 2,
-        title : "Mini Project"
-    },
-    
-    {
-        _id : "C.4.HCI.1",        
-        dept : 'COMP',
-        year : 4,        
-        subject : 'HCI',
-        number : 1,
-        title : "Create a login page in HTML + CSS"
-    },
-    
-    {
-        _id : "C.4.HCI.2",        
-        dept : 'COMP',
-        year : 4,        
-        subject : 'HCI',
-        number : 2,
-        title : "Use HCI in IOT mini project"
-    },
-    
-    {
-        _id : "C.3.DBMS.1",        
-        dept : 'COMP',
-        year : 3,        
-        subject : 'DBMS',
-        number : 1,
-        title : "Create a DBMS for E-Commerce"
-    },
-    
-    {
-        _id : "C.3.DBMS.2",        
-        dept : 'COMP',
-        year : 3,        
-        subject : 'DBMS',
-        number : 2,
-        title : "Mini Project"
-    },
-    
-    {
-        _id : "C.3.SDM.1",        
-        dept : 'COMP',
-        year : 3,        
-        subject : 'SDM',
-        number : 1,
-        title : "Create a Class Diagram for E-Commerce"
-    },
-    
-    {
-        _id : "C.3.SDM.2",        
-        dept : 'COMP',
-        year : 3,        
-        subject : 'SDM',
-        number : 2,
-        title : "Create a Activity Diagram for E-Commerce"
+        ]
+
     }
+
 ])
