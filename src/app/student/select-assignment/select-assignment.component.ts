@@ -19,14 +19,6 @@ export class SelectAssignmentComponent implements OnInit {
   public student: Student;
   public labsList: Labs;
   public subjectList: String[] = [];
-  public assignmentList: assignment[] = [];
-  public submissionList: Submission[] = [];
-  public submittedList: Assignment[] = [];
-
-  public studentRecord : Submission[] = [];
-
-  showAssignment: Boolean = false;
-  submission: Submission;
 
   constructor(private mongoService: MongoConnectService,
     private http: HttpClient) { }
@@ -61,54 +53,6 @@ export class SelectAssignmentComponent implements OnInit {
     });
 
     return subjectList;
-  }
-
-  getLabDetails(selectedSubject) {
-    this.studentRecord = [];
-    this.showAssignment = true;
-
-    // get assignment List of given subject from labs
-    this.labsList.subject.forEach(sub => {
-      if (sub.name == selectedSubject) {
-        this.assignmentList = sub.assignment;
-      }
-    })
-
-    // get list of assignment that student has submitted
-      this.student.submission.forEach(submission => {
-        if (submission.subject == selectedSubject) {
-          this.submittedList = submission.assignment;
-        }
-      })
-    
-    // merge both lists
-      let map = {};
-      this.assignmentList.forEach(element => {
-        element.number = element.number - 1;
-        this.studentRecord[element.number] = new Submission();
-        
-
-        this.studentRecord[element.number].srNo = element.number;
-        this.studentRecord[element.number].performanceDate = element.performanceDate;
-        this.studentRecord[element.number].title = element.title;
-        this.studentRecord[element.number].link = "";
-        this.studentRecord[element.number].marks = 0;
-        this.studentRecord[element.number].submissionDate = null;
-        this.studentRecord[element.number].status = false;
-        
-      });
-
-      this.submittedList.forEach(element =>{
-        element.number = element.number - 1;                  
-
-          this.studentRecord[element.number].link = element.link;
-          this.studentRecord[element.number].submissionDate = element.submissionDate;
-          this.studentRecord[element.number].status = true;
-          this.studentRecord[element.number].marks = element.marks        
-      })
-          
-      console.log(this.studentRecord);
-
   }
 
 }

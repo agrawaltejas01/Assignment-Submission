@@ -1,24 +1,13 @@
 <mat-toolbar> Welcome {{student?.name}}</mat-toolbar>
-<div *ngFor="let sub of subjectList">
-   <button (click)='getLabDetails(sub)'> {{sub}} </button>
-</div>
 
-<div *ngIf='showAssignment'>
-   <div *ngFor="let assignment of assignmentList; let i = index">
-      {{ assignment.number }} {{ assignment.title }} {{assignment.performanceDate | date}}
-      <i class="material-icons">done</i>
+<mat-tab-group>
+
+   <div *ngFor="let subject of subjectList">      
+      <mat-tab label="{{subject}}">
+         <app-lab-record [student]='student' [labsList]='labsList' [subject]='subject'>
+
+         </app-lab-record>
+      </mat-tab>
    </div>
-   <hr>
-   <!-- <div *ngFor = "let assignment of submittedList; let i = index">
-      {{ assignment.number }} {{ assignment.link }} {{assignment.marks}} {{assignment.submissionDate | date}}
-      <i class="material-icons">done</i>
-    </div> -->
-   <ul>
-      <div *ngFor="let assignment of studentRecord; let i = index">         
-         <li>
-            {{ assignment.srNo + 1 }} {{ assignment.title }} {{ assignment.status }}
-            {{ assignment.link }}
-         </li>
-      </div>
-   </ul>
-</div>
+
+</mat-tab-group>
