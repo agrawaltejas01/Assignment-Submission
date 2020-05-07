@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
+import { MongoConnectService } from 'src/app/store/services/mongo-connect.service';
 import { Student, Assignment } from '../../store/schema/student'
 import { Labs, assignment } from '../../store/schema/assignment'
 import { Submission } from 'src/app/store/schema/student-submission-details';
@@ -7,7 +9,14 @@ import { Submission } from 'src/app/store/schema/student-submission-details';
 @Component({
   selector: 'app-lab-record',
   templateUrl: './lab-record.component.html',
-  styleUrls: ['./lab-record.component.scss']
+  styleUrls: ['./lab-record.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]
 })
 export class LabRecordComponent implements OnInit {
 
@@ -24,11 +33,14 @@ export class LabRecordComponent implements OnInit {
   showAssignment: Boolean = false;
   submission: Submission;
 
-  displayedColumns = ['No', 'Title', 'Performance Date', 'Status'];
-  // displayedColumns = ['No', 'Title', 'Performance Date', 'Status', 'Submission Date',
-                      // 'Link', 'Marks'];
+  public link : String;
 
-  constructor() { }
+  displayedColumns = ['No', 'Title', 'Performance Date', 
+                      'Status', 'Submission Date', 'Link', 'Marks'];
+  
+  
+
+  constructor(private mongoService: MongoConnectService) { }
 
   ngOnInit(): void 
   {
@@ -77,5 +89,20 @@ export class LabRecordComponent implements OnInit {
           
       console.log(this.studentRecord);
   }  
+
+  submitAssignment(srNo, link)
+  {
+    // console.log(srNo + link + this.subject);
+    this.mongoService.submitAssignment(this.student?._id, this.subject, srNo + 1, link)
+      .subscribe(submitted => {
+        if(submitted)
+        {
+          this.studentRecord[srNo].link = link;
+          this.studentRecord[srNo].submissionDate = new Date();
+          this.studentRecord[srNo].status = true;
+        }
+        
+      })
+  }
 
 }

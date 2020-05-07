@@ -1,4 +1,3 @@
-
 <table mat-table [dataSource]="studentRecord" class="mat-elevation-z8">
 
    <!--- Note that these columns can be defined in any order.
@@ -27,14 +26,84 @@
       <th mat-header-cell *matHeaderCellDef> Status </th>
 
       <td mat-cell *matCellDef="let element">
-         <div *ngIf="element.status; else notStatus"> Submitted </div>
+         <div *ngIf="element.status; else notStatus">
+            Submitted
+            <div *ngIf="(element.performanceDate | date) > (element.submissionDate | date); else lateSubmission">
+               Early
+            </div>
+            <ng-template #lateSubmission>
+               Late
+            </ng-template>
+         </div>
          <ng-template #notStatus>
             <span class="not-submitted"> Not Submitted
             </span>
          </ng-template>
-      </td> 
+      </td>
+   </ng-container>
+
+   <!-- Submission Date Column -->
+   <ng-container matColumnDef="Submission Date">
+      <th mat-header-cell *matHeaderCellDef> Submission Date </th>
+
+      <td mat-cell *matCellDef="let element">
+         <div *ngIf="element.submissionDate; else notSubmitted"> {{element.submissionDate | date}} </div>
+         <ng-template #notSubmitted>
+            <span class="not-submitted"> Not Submitted
+            </span>
+         </ng-template>
+      </td>
+   </ng-container>
+
+   <!-- Link Column -->
+   <ng-container matColumnDef="Link">
+      <th mat-header-cell *matHeaderCellDef> Link </th>
+
+      <td mat-cell *matCellDef="let element">
+         <div *ngIf="!element.marks; else graded">
+            <form class="example-form">
+
+               <mat-form-field>
+                  <input placeholder="Link to your Assignment" matInput name="element.link" [(ngModel)]="element.link">
+               </mat-form-field>
+            </form>
+
+            <button class="submit-button" 
+                    mat-mini-fab color="primary" 
+                    [disabled] = "!element.link"
+                    aria-label="Example icon button with a menu icon"
+                    (click) = "submitAssignment(element.srNo, element.link)">
+               <span class="material-icons">
+                  done
+                  </span>
+             </button>
+
+         </div>
+         <ng-template #graded>
+            {{element.link}}
+         </ng-template>
+      </td>
+   </ng-container>
+
+   <!-- Marks Column -->
+   <ng-container matColumnDef="Marks">
+      <th mat-header-cell *matHeaderCellDef> Marks </th>
+
+      <td mat-cell *matCellDef="let element">
+         <div *ngIf="element.marks; else notGraded">{{element.marks}} </div>
+         <ng-template #notGraded>
+            <div *ngIf="element.status && !element.marks; 
+                     else notSubmitted"> Not Graded </div>
+         </ng-template>
+         <ng-template #notSubmitted>
+            <span class="not-submitted"> Not Submitted
+            </span>
+         </ng-template>
+      </td>
    </ng-container>
 
    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+{{link}}

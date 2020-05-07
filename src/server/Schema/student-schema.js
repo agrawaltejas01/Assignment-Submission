@@ -12,15 +12,17 @@ const studentSchema = new Schema({
     batch: { type: String },
     submission: [
         {
-        subject : { type : String },        
-        assignment : [
-            {
-                number : { type : Number },
-                submissionDate : { type : Date },
-                link : { type : String },
-                marks : { type : Number }
-            }
-        ]
+            _id : false,
+            subject: { type: String },
+            assignment: [
+                {
+                    _id : false,
+                    number: { type: Number },
+                    submissionDate: { type: Date },
+                    link: { type: String },
+                    marks: { type: Number }
+                }
+            ]
         }
 
     ]

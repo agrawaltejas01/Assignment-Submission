@@ -46,4 +46,14 @@ export class MongoConnectService {
     })
   }
 
+  submitAssignment(id : String, subject : String, number : Number, link : String)
+  {
+    return this.http.post<Boolean>(this.baseUrl + 'api/submitAssignment', {
+      id,
+      subject,
+      number,
+      link
+    })
+  }
+
 }
