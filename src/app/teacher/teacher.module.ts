@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectAssignmentComponent } from './select-assignment/select-assignment.component';
 import { MongoConnectService } from '../store/services/mongo-connect.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,12 +14,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { LabRecordComponent } from './lab-record/lab-record.component';
+import { SelectStudentComponent } from './select-student/select-student.component';
+
 
 
 @NgModule({
-  declarations: [SelectAssignmentComponent, LabRecordComponent],
-  imports: [
+  declarations: 
+  [
+    SelectStudentComponent
+  ],
+
+  imports: 
+  [
     BrowserModule,
     CommonModule,
     HttpClientModule,
@@ -32,18 +37,17 @@ import { LabRecordComponent } from './lab-record/lab-record.component';
     BrowserAnimationsModule,
     MatButtonModule, 
     MatIconModule,
-    FormsModule,   
+    FormsModule,  
   ],
 
-  exports : [
-    SelectAssignmentComponent,
-    LabRecordComponent
+  exports :
+  [
+    SelectStudentComponent,
   ],
 
   providers:
   [
     MongoConnectService,
   ]
-  
 })
-export class StudentModule { }
+export class TeacherModule { }

@@ -3,8 +3,8 @@ const bodyParser = require('body-parser')
 var mongo = require('mongoose');
 const app = express()
 
-student = require('./Schema/student-schema')
-labs = require('./Schema/labs-schema')
+student = require('../Schema/student-schema')
+labs = require('../Schema/labs-schema')
 
 app.use(bodyParser.json())
 
@@ -40,29 +40,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-
-
-app.post("/api/FindStudentInBatch", function (req, res) {
-    console.log("IGI in API");
-    var model = mongo.model('student', studentSchema, 'student')
-
-    model.find(
-        { batch: "I.4.P.10" },
-        function (err, data) {
-            if (err)
-                res.send(err);
-
-            else {
-                console.log('Following Student Data is retrieved : ');
-                console.log(data);
-
-                // res.sendStatus(200) 
-                res.send(data);
-                // console.log(res.send.data);
-            }
-        }
-    );
-})
 
 app.post("/api/getStudent", function (req, res) {
 
